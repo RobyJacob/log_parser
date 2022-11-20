@@ -12,5 +12,5 @@ RUN pip install -r requirements.txt
 
 EXPOSE 9999
 
-CMD python app.py
+CMD gunicorn -w 4 -b 0.0.0.0:9999 'app:app'
 

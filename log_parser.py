@@ -7,6 +7,12 @@ class Parser:
         self.content_byte = byte_string
 
     def parse(self):
+        """
+        1. Decode byte string
+        2. Filter irrelevant data using regex
+        3. Extract relevant information
+        :return: Dict
+        """
         content_str = base64.decodebytes(self.content_byte).decode()
         contents = re.findall("\[\s\d\](.*)", content_str)
         filtered_contents = list(map(lambda content: content.split(),

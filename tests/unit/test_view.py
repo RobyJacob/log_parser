@@ -24,3 +24,10 @@ def test_parse():
         for result in response_data.get("results"):
             for k, v in result.items():
                 assert v == exp_result.get("results")[0].get(k)
+
+
+def test_parse_empty_data():
+    with app.test_client() as test_client:
+        response = test_client.post("/parse", data=b"")
+
+        assert response.data == b'{"results":[]}\n'

@@ -10,7 +10,7 @@ class Parser:
         content_str = base64.decodebytes(self.content_byte).decode()
         contents = re.findall("\[\s\d\](.*)", content_str)
         filtered_contents = list(map(lambda content: content.split(),
-                                   contents))
+                                     contents))
         parsed_contents = {"results": []}
 
         for content in filtered_contents:

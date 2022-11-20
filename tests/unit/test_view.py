@@ -1,11 +1,10 @@
-import base64
-
 from app import app
 
 
 def test_parse():
     with app.test_client() as test_client:
         import json
+        import base64
 
         content_bytes = base64.encodebytes("[ 0]ENTER: /usr/local/src/pkg/apis/machineconfiguration.openshift.io/v1"
                                            "/register.go:28 0".encode())
@@ -25,4 +24,3 @@ def test_parse():
         for result in response_data.get("results"):
             for k, v in result.items():
                 assert v == exp_result.get("results")[0].get(k)
-

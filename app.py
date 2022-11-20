@@ -20,4 +20,4 @@ def check_health():
 
 
 if __name__ == "__main__":
-    app.run(port=9999, debug=True, threaded=True)
+    app.run(port=9999, debug=True, processes=3, threaded=False)

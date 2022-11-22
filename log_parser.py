@@ -21,14 +21,15 @@ class Parser:
 
         for content in filtered_contents:
             operation = content[0][:-1]
-            file_name, line_number = content[1].split(":")
-            name = "anonymous" if content[2] == "0" else content[2]
+            file_path, line_number = content[1].split(":")
+            func_name = "anonymous" if not content[2][0].isalpha() \
+                                       and content[2][0] != "_" else content[2]
 
             parsed_content = {
                 "operation": operation,
-                "file_name": file_name,
+                "file_name": file_path,
                 "line_number": line_number,
-                "name": name
+                "name": func_name
             }
             parsed_contents.get("results").append(parsed_content)
 
